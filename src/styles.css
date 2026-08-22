@@ -625,9 +625,9 @@ body {
   /* filmstrip band: 3 video lanes + 1 slim audio lane. The top lane fades in
      as a soft gradient (depth), so the band shows MORE work without a hard cut. */
   .ribbon {
-    top: auto; bottom: 0; height: 300px;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.55) 46px, #000 104px);
-    mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.55) 46px, #000 104px);
+    top: auto; bottom: 0; height: 266px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.5) 30px, #000 74px);
+    mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.5) 30px, #000 74px);
   }
   .ribbon-plane {
     transform: none; left: 0; right: 0; top: 0; bottom: 0; height: 100%;
@@ -636,9 +636,10 @@ body {
   }
   .ribbon-ruler, .ribbon-playhead, .lane-split { display: none; }
   .lane--depth3 { display: none; }
-  .lane--audio.lane--depth1, .lane--audio.lane--depth2 { display: none; } /* keep just A1 */
-  .lane--video { height: 80px; }
-  .lane--audio { height: 46px; }
+  .lane--audio.lane--depth2 { display: none; } /* keep A1 + A2 (two audio tracks) */
+  /* compact: 3 slim video lanes + 2 slim audio lanes read as a real multitrack */
+  .lane--video { height: 58px; }
+  .lane--audio { height: 32px; }
   .ribbon-scrim {
     background: linear-gradient(0deg, rgba(9,9,11,0.7) 0%, rgba(9,9,11,0.15) 32%, transparent 60%);
   }
@@ -1356,7 +1357,7 @@ body {
      the upper half, leaving a dead gap between the title and the sub-copy. */
   .hero {
     justify-content: flex-start;
-    padding: calc(96px + env(safe-area-inset-top)) var(--pad) 316px;
+    padding: calc(96px + env(safe-area-inset-top)) var(--pad) 286px;
     min-height: auto;
   }
   .hero-top {
