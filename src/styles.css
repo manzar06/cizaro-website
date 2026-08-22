@@ -624,43 +624,50 @@ body {
      mid widths the desktop ribbon only filled the top half, leaving a dead gap. */
   /* filmstrip band: 3 video lanes + 1 slim audio lane. The top lane fades in
      as a soft gradient (depth), so the band shows MORE work without a hard cut. */
+  /* the SAME tilted multitrack ribbon as desktop, compacted into a bottom band
+     so the stacked hero copy above stays clean. Full track stack + perspective. */
   .ribbon {
-    top: auto; bottom: 0; height: 266px;
-    -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.5) 30px, #000 74px);
-    mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.5) 30px, #000 74px);
+    top: auto; bottom: 0; height: 332px;
+    perspective: 1300px;
+    perspective-origin: 58% 26%;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.4) 8%, #000 26%);
+    mask-image: linear-gradient(to bottom, transparent 0, rgba(0,0,0,0.4) 8%, #000 26%);
   }
   .ribbon-plane {
-    transform: none; left: 0; right: 0; top: 0; bottom: 0; height: 100%;
+    left: -14%; right: -16%; top: 0; bottom: -8%; height: auto;
+    transform: rotateX(15deg) rotateY(-6deg) rotateZ(-1deg) scale(1.05);
+    transform-origin: 55% 24%;
+    justify-content: flex-start;
     animation: none;
-    justify-content: flex-end;
   }
-  .ribbon-ruler, .ribbon-playhead, .lane-split { display: none; }
-  .lane--depth3 { display: none; }
-  .lane--audio.lane--depth2 { display: none; } /* keep A1 + A2 (two audio tracks) */
-  /* compact: 3 slim video lanes + 2 slim audio lanes read as a real multitrack */
-  .lane--video { height: 58px; }
-  .lane--audio { height: 32px; }
+  /* show the full desktop track stack: ruler + 5 video + 3 audio + playhead */
+  .ribbon-ruler { display: flex; height: 20px; }
+  .ribbon-playhead { display: block; }
+  .lane-split { display: block; }
+  .lane--depth3 { display: block; }
+  .lane--audio.lane--depth1, .lane--audio.lane--depth2 { display: block; }
+  /* compact heights so the whole multitrack fits the band */
+  .lane--video { height: 42px; }
+  .lane--audio { height: 24px; }
   .ribbon-scrim {
-    background: linear-gradient(0deg, rgba(9,9,11,0.7) 0%, rgba(9,9,11,0.15) 32%, transparent 60%);
+    background: linear-gradient(0deg, rgba(9,9,11,0.6) 0%, rgba(9,9,11,0.1) 30%, transparent 55%);
   }
-  .ribbon-vignette, .ribbon-bloom, .ribbon-orbs { opacity: 0.1; }
+  .ribbon-vignette, .ribbon-bloom, .ribbon-orbs { opacity: 0.14; }
 
-  /* the band stands on its own here (not behind the headline), so make the clips
-     bright + punchy and quiet the technical labels for a cleaner editor look */
-  .ribbon .lane--video { filter: saturate(1.14) brightness(1.08) contrast(1.02); }
+  /* clip polish: brighten via a lighter overlay (no filter — filters on the
+     animated lanes would re-rasterize every frame) and quiet the labels */
   .ribbon .clip--video::before {
-    background: linear-gradient(rgba(0,0,0,0.14), transparent 42%, rgba(0,0,0,0.04));
+    background: linear-gradient(rgba(0,0,0,0.12), transparent 42%, rgba(0,0,0,0.04));
   }
   .ribbon .clip {
-    border-radius: 6px;
-    border-color: rgba(255,255,255,0.16);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.55);
+    border-radius: 5px;
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
   }
   .ribbon .clip::after { height: 2px; }
-  .ribbon .clip-name { font-size: 8px; color: rgba(245,245,240,0.48); left: 6px; bottom: 4px; }
-  .ribbon .clip-dur { font-size: 8px; background: rgba(0,0,0,0.32); }
+  .ribbon .clip-name { font-size: 7px; color: rgba(245,245,240,0.42); left: 5px; bottom: 3px; }
+  .ribbon .clip-dur { font-size: 7px; background: rgba(0,0,0,0.32); top: 4px; }
   .ribbon .clip-strip-seams { opacity: 0.4; }
-  /* audio lane: give the flat block a subtle sheen so it reads as a track */
   .ribbon .lane--audio { background: linear-gradient(180deg, #14141a, #0c0c10); }
   .wf path { fill-opacity: 0.7; }
 }
@@ -1357,7 +1364,7 @@ body {
      the upper half, leaving a dead gap between the title and the sub-copy. */
   .hero {
     justify-content: flex-start;
-    padding: calc(96px + env(safe-area-inset-top)) var(--pad) 286px;
+    padding: calc(96px + env(safe-area-inset-top)) var(--pad) 342px;
     min-height: auto;
   }
   .hero-top {
