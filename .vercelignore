@@ -1,0 +1,5 @@
+# Media is served from Cloudflare R2 — never upload it to Vercel.
+public/media
+media-r2
+dist
+node_modules
