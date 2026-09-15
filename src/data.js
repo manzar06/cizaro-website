@@ -38,6 +38,7 @@ export const TOOLS = [
   { name: 'Adobe Premiere Pro', tag: 'Editing' },
   { name: 'Adobe After Effects', tag: 'Motion & VFX' },
   { name: 'CapCut Pro', tag: 'Short-form' },
+  { name: 'Filmora', tag: 'Editing' },
 ]
 
 export const SERVICES = [
