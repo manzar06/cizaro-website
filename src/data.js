@@ -81,8 +81,8 @@ export const FEATURED = [
   },
   {
     client: 'Dan Limb',
-    niche: 'Documentary',
-    blurb: 'Long-form documentary cutting with patient pacing, interview-led structure and mood-first color.',
+    niche: 'Business Documentary',
+    blurb: '"How They Did It: Patrick Bet-David." A business biography built on a host-led script, archival B-roll, kinetic captions and animated graphics that turn a life story into lessons.',
     category: 'longform',
     slug: 'documentary-style',
   },
@@ -107,17 +107,15 @@ export const CATEGORIES = [
 ]
 
 export const VIDEOS = [
-  { category: 'longform', slug: 'podcast-trailer', title: 'Podcast Trailer' },
-  { category: 'longform', slug: 'documentary-style', title: 'Documentary Style' },
-  { category: 'longform', slug: 'gaming-video', title: 'Gaming Video' },
-  { category: 'longform', slug: 'ayinde-landscape', title: 'Ayinde' },
-  { category: 'longform', slug: 'cash-cow-style', title: 'Cash Cow Style' },
+  { category: 'longform', slug: 'documentary-style', title: 'How They Did It: Patrick Bet-David' },
+  { category: 'longform', slug: 'gaming-video', title: 'Roblox Commentary' },
+  { category: 'longform', slug: 'cash-cow-style', title: 'Faceless Explainer: Star Wars' },
 
-  { category: 'shorts', slug: 'hype-teaser', title: 'Hype Teaser' },
-  { category: 'shorts', slug: 'freestyle-rap', title: 'Freestyle Rap' },
-  { category: 'shorts', slug: 'kobe-motivational', title: 'Motivational' },
-  { category: 'shorts', slug: 'football-trial', title: 'Football Trial' },
-  { category: 'shorts', slug: 'roobet', title: 'Roobet' },
+  { category: 'shorts', slug: 'hype-teaser', title: 'Brand Hype Teaser' },
+  { category: 'shorts', slug: 'freestyle-rap', title: 'Street Interview: Freestyle' },
+  { category: 'shorts', slug: 'kobe-motivational', title: 'Kobe Bryant Motivational' },
+  { category: 'shorts', slug: 'football-trial', title: 'Football Funny Moments' },
+  { category: 'shorts', slug: 'roobet', title: 'Stream Clip' },
 
   { category: 'gaming', slug: 'cod-montage-1', title: 'Call of Duty: Montage 1' },
   { category: 'gaming', slug: 'cod-montage-2', title: 'Call of Duty: Montage 2' },
@@ -125,11 +123,10 @@ export const VIDEOS = [
   { category: 'gaming', slug: 'destiny-wtf-sxmpra', title: 'Destiny 2: WTF SXMPRA' },
   { category: 'gaming', slug: 'wildrift-1', title: 'Wild Rift' },
 
-  { category: 'trailers', slug: 'hype-teaser-2', title: 'Hype Teaser' },
-  { category: 'trailers', slug: 'mfm-trailer', title: 'MFM Trailer' },
-  { category: 'trailers', slug: '1k-special', title: '1K Special' },
-  { category: 'trailers', slug: 'ayinde-trailer', title: 'Ayinde Trailer' },
-  { category: 'trailers', slug: 'steve-will-do-it', title: 'Steve Will Do It' },
+  { category: 'trailers', slug: 'mfm-trailer', title: 'My First Million Podcast Trailer' },
+  { category: 'trailers', slug: '1k-special', title: '1K Subscriber Special' },
+  { category: 'trailers', slug: 'ayinde-trailer', title: 'Podcast Clip: The Calum Johnson Show' },
+  { category: 'trailers', slug: 'steve-will-do-it', title: 'Podcast Clip: Steve WillDoIt Show' },
 
   { category: 'amv', slug: 'one-piece', title: 'One Piece' },
   { category: 'amv', slug: 'solo-leveling', title: 'Solo Leveling' },
@@ -137,10 +134,10 @@ export const VIDEOS = [
   { category: 'amv', slug: 'vinland-saga', title: 'Vinland Saga' },
   { category: 'amv', slug: 'zenitsu', title: 'Zenitsu' },
 
-  { category: 'anime', slug: 'best-anime-you-forgot', title: 'The Best Anime You Forgot' },
-  { category: 'anime', slug: 'best-of-anime-2025', title: 'Best of Anime 2025' },
+  { category: 'anime', slug: 'best-anime-you-forgot', title: 'Video Essay: The Best Anime You Forgot' },
+  { category: 'anime', slug: 'best-of-anime-2025', title: 'Best of Anime 2025 (40 min)' },
 
-  { category: 'vfx', slug: '3d-phone-vfx', title: '3D Phone VFX' },
+  { category: 'vfx', slug: '3d-phone-vfx', title: 'Screen Replacement VFX' },
 
   { category: 'colorgrade', slug: 'cc-1', title: 'Color Correction 1' },
   { category: 'colorgrade', slug: 'cc-2', title: 'Color Correction 2' },
