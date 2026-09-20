@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { BorderBeam } from 'border-beam'
 import { CONTACT } from '../data.js'
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -123,7 +124,9 @@ export default function Contact() {
             <ContactLink i={2} external href={CONTACT.discord.href} label={`Discord ${CONTACT.discord.handle}`} />
           </div>
           <div className="contact-badges">
-            <span className="badge"><span className="dot" />{CONTACT.availability}</span>
+            <BorderBeam size="pulse-inner" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.8} className="beam-badge">
+              <span className="badge"><span className="dot" />{CONTACT.availability}</span>
+            </BorderBeam>
             <span className="badge">{CONTACT.rate}</span>
             <span className="badge">{CONTACT.turnaround}</span>
             <span className="badge">{CONTACT.response}</span>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { BorderBeam } from 'border-beam'
+import { ThinkingOrb } from 'thinking-orbs'
 import { HERO } from '../data.js'
 import EditTimeline from './EditTimeline.jsx'
 
@@ -26,7 +28,10 @@ export default function Hero() {
       <div className="hero-top">
         <span className="rec"><span className="dot" />Recording</span>
         <span>{HERO.kicker}</span>
-        <span>{timecode}</span>
+        <span className="hero-tc">
+          <ThinkingOrb state="working" size={20} theme="dark" aria-label="Editing in progress" />
+          {timecode}
+        </span>
       </div>
 
       <div className="hero-titles">
@@ -58,7 +63,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.85 }}
         >
-          <a href={HERO.cta.href} className="btn btn-solid">{HERO.cta.label}</a>
+          <BorderBeam size="pulse-outside" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.6} className="beam-wrap">
+            <a href={HERO.cta.href} className="btn btn-solid">{HERO.cta.label}</a>
+          </BorderBeam>
           <a href={HERO.cta2.href} className="btn btn-outline">{HERO.cta2.label}</a>
         </motion.div>
       </div>

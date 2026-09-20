@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import { BorderBeam } from 'border-beam'
 import { NAV, BRAND, CONTACT } from '../data.js'
 
 const EASE = [0.22, 1, 0.36, 1]
@@ -45,7 +46,9 @@ export default function Nav() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="nav-cta">Let&apos;s talk</a>
+        <BorderBeam size="sm" colorVariant="sunset" theme="dark" strength={0.9} staticColors className="beam-wrap nav-cta-beam">
+          <a href="#contact" className="nav-cta">Let&apos;s talk</a>
+        </BorderBeam>
         <button
           type="button"
           className={`nav-burger${open ? ' open' : ''}`}

@@ -1,23 +1,37 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { BorderBeam } from 'border-beam'
 import { SERVICES } from '../data.js'
 
 function ServiceCard({ s, i, onOpen }) {
   const videoRef = useRef(null)
+  const [hover, setHover] = useState(false)
 
   const enter = () => {
+    setHover(true)
     const v = videoRef.current
     if (!v) return
     if (!v.src) v.src = s.video // lazy-load the file only on first hover
     v.play().catch(() => {})
   }
   const leave = () => {
+    setHover(false)
     const v = videoRef.current
     if (!v) return
     v.pause()
   }
 
   return (
+    <BorderBeam
+      size="md"
+      colorVariant="sunset"
+      theme="dark"
+      strength={1}
+      brightness={1.8}
+      staticColors
+      active={hover}
+      className="beam-card"
+    >
     <motion.div
       className="service-card"
       onMouseEnter={enter}
@@ -43,6 +57,7 @@ function ServiceCard({ s, i, onOpen }) {
         <p className="service-desc">{s.desc}</p>
       </div>
     </motion.div>
+    </BorderBeam>
   )
 }
 

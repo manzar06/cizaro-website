@@ -1,8 +1,13 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { ThinkingOrb } from 'thinking-orbs'
+import { BorderBeam } from 'border-beam'
 
 export default function Lightbox({ item, onClose }) {
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
     if (!item) return
+    setLoading(item.type !== 'image')
     document.body.style.overflow = 'hidden'
     const onKey = (e) => e.key === 'Escape' && onClose()
     window.addEventListener('keydown', onKey)
@@ -23,7 +28,25 @@ export default function Lightbox({ item, onClose }) {
         {item.type === 'image' ? (
           <img src={item.src} alt={item.title || ''} />
         ) : (
-          <video src={item.src} controls autoPlay playsInline />
+          <>
+            <BorderBeam size="md" colorVariant="sunset" theme="dark" strength={0.75} staticColors className="beam-player">
+              <video
+                src={item.src}
+                controls
+                autoPlay
+                playsInline
+                onLoadedData={() => setLoading(false)}
+                onWaiting={() => setLoading(true)}
+                onPlaying={() => setLoading(false)}
+              />
+            </BorderBeam>
+            {loading && (
+              <div className="lightbox-loader" aria-live="polite">
+                <ThinkingOrb state="working" size={64} theme="dark" aria-label="Loading the video" />
+                <span>Loading</span>
+              </div>
+            )}
+          </>
         )}
         {item.title && <span className="lightbox-title">{item.title}</span>}
       </div>

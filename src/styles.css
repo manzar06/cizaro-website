@@ -1477,3 +1477,46 @@ body {
   /* the desktop cursor-follow preview never fires without a mouse; keep hidden */
   .featured-preview { display: none !important; }
 }
+
+/* ---- libraries.dev effects: thinking orbs + border beam ---- */
+.hero-tc { display: inline-flex; align-items: center; gap: 8px; }
+.hero-tc canvas { opacity: 0.85; }
+
+.lightbox-loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  border-radius: 12px;
+  background: rgba(9, 9, 11, 0.72);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* beam wrappers must behave exactly like the element they replace in a grid */
+.beam-card { display: block; position: relative; min-width: 0; }
+.beam-card > .service-card { height: 100%; }
+.beam-card--clip { border-radius: 14px; transition: transform 0.4s var(--ease); }
+.beam-card--clip > .video-card { height: 100%; }
+/* lift the wrapper, not the card, so the beam travels with the hover lift */
+.beam-card--clip:hover { transform: translateY(-4px); z-index: 2; }
+.beam-card--clip:hover > .video-card { transform: none; }
+.beam-badge { display: inline-flex; border-radius: 999px; }
+.beam-player { display: block; line-height: 0; }
+.beam-player > video { display: block; }
+
+/* the beam wrapper must not change the button layout it wraps */
+.beam-wrap { display: inline-flex; border-radius: 999px; }
+.beam-wrap > .btn { display: inline-flex; }
+@media (max-width: 720px) {
+  .hero-ctas .beam-wrap { flex: 1 1 0; }
+  .hero-ctas .beam-wrap .btn { width: 100%; }
+  .nav-cta-beam { display: none; }
+}

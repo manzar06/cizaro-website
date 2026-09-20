@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, animate } from 'framer-motion'
+import { BorderBeam } from 'border-beam'
 import { STATS, TOOLS } from '../data.js'
 
 /* software marks so the tools row reads as real logos, not plain text */
@@ -100,12 +101,22 @@ export default function About() {
           transition={{ duration: 0.7 }}
         >
           {STATS.map((s) => (
-            <div className="stat-card" key={s.label}>
-              <div className="stat-value">
-                <Counter value={s.value} /><span className="accent">{s.suffix}</span>
+            <BorderBeam
+              key={s.label}
+              size="pulse-inner"
+              colorVariant="mono"
+              theme="dark"
+              strength={0.55}
+              duration={3.4}
+              className="beam-card"
+            >
+              <div className="stat-card">
+                <div className="stat-value">
+                  <Counter value={s.value} /><span className="accent">{s.suffix}</span>
+                </div>
+                <div className="stat-label">{s.label}</div>
               </div>
-              <div className="stat-label">{s.label}</div>
-            </div>
+            </BorderBeam>
           ))}
         </motion.div>
       </div>
