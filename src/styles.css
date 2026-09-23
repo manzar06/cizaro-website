@@ -374,7 +374,7 @@ body {
 .hero-sub { max-width: 460px; }
 .hs-intro { font-size: 15px; color: var(--muted); display: flex; align-items: baseline; gap: 10px; }
 .hs-hi { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
-.hs-name { font-family: var(--font-serif); font-style: italic; font-size: clamp(34px, 3.4vw, 46px); line-height: 1; color: var(--fg); }
+.hs-name { font-family: var(--font-serif); font-style: italic; font-size: 20px; line-height: 1; color: var(--fg); }
 .hs-lead { margin-top: 10px; font-size: 17px; line-height: 1.5; color: var(--muted); }
 .hs-punch {
   font-family: var(--font-serif); font-style: italic; font-size: 1.35em; line-height: 1;
