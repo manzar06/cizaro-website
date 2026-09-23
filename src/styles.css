@@ -34,6 +34,7 @@ h1, h2, h3, h4, p { margin: 0; }
   --font-display: 'Anton', 'Inter', sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'Space Mono', monospace;
+  --font-serif: 'Instrument Serif', Georgia, serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -370,12 +371,19 @@ body {
   gap: 32px;
   flex-wrap: wrap;
 }
-.hero-sub {
-  max-width: 460px;
-  color: var(--muted);
-  font-size: clamp(15px, 1.6vw, 18px);
-  line-height: 1.6;
+.hero-sub { max-width: 460px; }
+.hs-intro { font-size: 15px; color: var(--muted); display: flex; align-items: baseline; gap: 10px; }
+.hs-hi { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+.hs-name { font-family: var(--font-serif); font-style: italic; font-size: clamp(34px, 3.4vw, 46px); line-height: 1; color: var(--fg); }
+.hs-lead { margin-top: 10px; font-size: 17px; line-height: 1.5; color: var(--muted); }
+.hs-punch {
+  font-family: var(--font-serif); font-style: italic; font-size: 1.35em; line-height: 1;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+  padding-right: 2px;
 }
+.hs-niches { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-wrap: wrap; gap: 6px 14px; }
+.hs-niches li { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg); opacity: 0.7; display: flex; align-items: center; gap: 14px; }
+.hs-niches li + li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); }
 .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
 .btn {
   font-size: 14px;
@@ -1326,16 +1334,36 @@ body {
 }
 .contact-link:hover { gap: 18px; }
 .contact-link:hover .cl-arrow { transform: translate(5px, -5px); }
-.contact-badges { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; text-align: right; }
-.badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-  display: flex; align-items: center; gap: 8px;
+.beam-card { display: block; border-radius: 20px; }
+.avail-card {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(19, 19, 22, 0.72);
+  padding: 20px 24px 22px;
+  min-width: 320px;
 }
-.badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); animation: blink 1.6s infinite; }
+.avail-status {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--lime);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.avail-status .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 10px var(--lime); animation: blink 1.6s infinite; flex-shrink: 0; }
+.avail-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 16px 0 0; }
+.avail-stats dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.avail-stats dd { margin: 6px 0 0; display: flex; align-items: baseline; gap: 3px; }
+.avail-stats dd b { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-size: 38px; line-height: 1; color: var(--fg); }
+.avail-stats dd span { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
 
 /* ---------- footer ---------- */
 .footer {
@@ -1379,7 +1407,8 @@ body {
   }
   .hero-top > span:nth-child(2) { order: 3; flex-basis: 100%; color: var(--muted); }
   .hero-titles { margin: 30px 0 26px; }
-  .hero-sub { max-width: 100%; font-size: 15px; }
+  .hero-sub { max-width: 100%; }
+  .hs-lead { font-size: 15.5px; }
   .hero-ctas { gap: 12px; }
   .hero-scroll { display: none; }
   .hero-bottom { flex-direction: column; align-items: flex-start; gap: 22px; }
@@ -1405,7 +1434,8 @@ body {
   .vault-name { font-size: clamp(26px, 8vw, 44px); }
   .contact-wrap { min-height: auto; justify-content: flex-start; gap: 28px; }
   .contact-row { flex-direction: column; align-items: flex-start; }
-  .contact-badges { align-items: flex-start; text-align: left; }
+  .beam-card, .avail-card { width: 100%; min-width: 0; }
+  .avail-stats dd b { font-size: 32px; }
 
   /* featured: no hover preview on touch, so show the niche + a tap arrow */
   .featured-row {

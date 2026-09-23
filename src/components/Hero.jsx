@@ -125,14 +125,22 @@ export default function Hero() {
       </h1>
 
       <div className="hero-bottom">
-        <motion.p
+        <motion.div
           className="hero-sub"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.7 }}
         >
-          {HERO.sub}
-        </motion.p>
+          <p className="hs-intro">
+            <span className="hs-hi">Hi, I&apos;m</span> <em className="hs-name">{HERO.sub.name}.</em>
+          </p>
+          <p className="hs-lead">
+            {HERO.sub.lead} <em className="hs-punch">{HERO.sub.punch}</em>
+          </p>
+          <ul className="hs-niches">
+            {HERO.sub.niches.map((n) => <li key={n}>{n}</li>)}
+          </ul>
+        </motion.div>
         <motion.div
           className="hero-ctas"
           initial={{ opacity: 0, y: 20 }}

@@ -123,14 +123,19 @@ export default function Contact() {
             <ContactLink i={1} external href={CONTACT.instagram.href} label={`Instagram ${CONTACT.instagram.handle}`} />
             <ContactLink i={2} external href={CONTACT.discord.href} label={`Discord ${CONTACT.discord.handle}`} />
           </div>
-          <div className="contact-badges">
-            <BorderBeam size="pulse-inner" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.8} className="beam-badge">
-              <span className="badge"><span className="dot" />{CONTACT.availability}</span>
-            </BorderBeam>
-            <span className="badge">{CONTACT.rate}</span>
-            <span className="badge">{CONTACT.turnaround}</span>
-            <span className="badge">{CONTACT.response}</span>
-          </div>
+          <BorderBeam size="pulse-inner" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.8} className="beam-card">
+            <div className="avail-card">
+              <div className="avail-status"><span className="dot" />{CONTACT.availability}</div>
+              <dl className="avail-stats">
+                {CONTACT.stats.map((s) => (
+                  <div key={s.label}>
+                    <dt>{s.label}</dt>
+                    <dd><b>{s.value}</b><span>{s.unit}</span></dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          </BorderBeam>
         </div>
       </div>
     </section>

@@ -18,7 +18,12 @@ export const NAV = [
 export const HERO = {
   kicker: 'Freelance video editor',
   lines: ['CUTS THAT', 'KEEP THEM', 'WATCHING'],
-  sub: "I'm Kunal. 4+ years turning raw footage into videos people can't scroll past. Gaming, finance, documentary, faceless, shorts.",
+  sub: {
+    name: 'Kunal',
+    lead: '4+ years turning raw footage into videos people',
+    punch: "can't scroll past.",
+    niches: ['Gaming', 'Finance', 'Documentary', 'Faceless', 'Shorts'],
+  },
   cta: { label: 'See the work', href: '#work' },
   cta2: { label: 'Book a slot', href: '#contact' },
 }
@@ -162,4 +167,9 @@ export const CONTACT = {
   turnaround: '~1 week turnaround',
   response: '24hr response time',
   availability: 'Open for new projects',
+  stats: [
+    { value: '$20', unit: '/hr', label: 'Rate' },
+    { value: '~1', unit: 'wk', label: 'Turnaround' },
+    { value: '24', unit: 'hr', label: 'Response' },
+  ],
 }
