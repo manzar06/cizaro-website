@@ -44,12 +44,19 @@ function useHeadline(heroRef, titlesRef) {
           autoSplit: true,
           onSplit(self) {
             // the gradient line: give each letter its slice of one shared gradient
+            // (measured again after layout + fonts settle; a 0 width would hide the text)
             if (el.classList.contains('is-grad')) {
-              const w = el.offsetWidth
-              self.chars.forEach((c) => {
-                c.style.backgroundSize = `${w}px 100%`
-                c.style.backgroundPosition = `${-c.offsetLeft}px 0`
-              })
+              const paint = () => {
+                const w = el.getBoundingClientRect().width
+                if (!w) return
+                self.chars.forEach((c) => {
+                  c.style.backgroundSize = `${w}px 100%`
+                  c.style.backgroundPosition = `${-c.offsetLeft}px 0`
+                })
+              }
+              paint()
+              requestAnimationFrame(paint)
+              document.fonts?.ready.then(paint)
             }
             if (canHover) {
               self.chars.forEach((c) => {
