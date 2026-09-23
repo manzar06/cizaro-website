@@ -64,7 +64,7 @@ function LogoStrip({ reverse }) {
   )
 }
 
-function ContactLink({ href, label, i, external }) {
+function ContactLink({ href, kind, label, i, external }) {
   return (
     <motion.a
       className="contact-link"
@@ -76,11 +76,14 @@ function ContactLink({ href, label, i, external }) {
       viewport={{ once: true, margin: '-60px' }}
       transition={{ duration: 0.55, delay: 0.08 * i, ease: EASE }}
     >
-      <span className="cl-roll">
-        <span className="cl-line">{label}</span>
-        <span className="cl-line cl-line--dup" aria-hidden="true">{label}</span>
+      <span className="cl-kind">{String(i + 1).padStart(2, '0')} / {kind}</span>
+      <span className="cl-main">
+        <span className="cl-roll">
+          <span className="cl-line">{label}</span>
+          <span className="cl-line cl-line--dup" aria-hidden="true">{label}</span>
+        </span>
+        <span className="cl-arrow" aria-hidden="true">↗</span>
       </span>
-      <span className="cl-arrow" aria-hidden="true">↗</span>
     </motion.a>
   )
 }
@@ -119,9 +122,9 @@ export default function Contact() {
 
         <div className="contact-row">
           <div className="contact-links">
-            <ContactLink i={0} href={`mailto:${CONTACT.email}`} label={CONTACT.email} />
-            <ContactLink i={1} external href={CONTACT.instagram.href} label={`Instagram ${CONTACT.instagram.handle}`} />
-            <ContactLink i={2} external href={CONTACT.discord.href} label={`Discord ${CONTACT.discord.handle}`} />
+            <ContactLink i={0} kind="Email" href={`mailto:${CONTACT.email}`} label={CONTACT.email} />
+            <ContactLink i={1} external href={CONTACT.instagram.href} kind="Instagram" label={CONTACT.instagram.handle} />
+            <ContactLink i={2} external href={CONTACT.discord.href} kind="Discord" label={CONTACT.discord.handle} />
           </div>
           <BorderBeam size="pulse-inner" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.8} className="beam-card">
             <div className="avail-card">

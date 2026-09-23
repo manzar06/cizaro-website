@@ -1280,25 +1280,43 @@ body {
   border-top: 1px solid var(--line);
   padding-top: 32px;
 }
-.contact-links { display: flex; flex-direction: column; gap: 18px; }
+.contact-links { display: flex; flex-direction: column; flex: 1; max-width: 560px; width: 100%; }
 .contact-link {
   position: relative;
-  font-size: clamp(20px, 2.4vw, 30px);
-  line-height: 1.05;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 0 18px;
+  border-bottom: 1px solid var(--line);
   color: var(--fg);
-  transition: gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-/* animated underline that wipes in from the left on hover */
+.contact-link:first-child { border-top: 1px solid var(--line); }
+.cl-kind {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+.cl-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: clamp(19px, 2.2vw, 28px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  min-width: 0;
+}
+.cl-main .cl-roll { min-width: 0; overflow-wrap: anywhere; }
+/* accent line wipes across the row divider on hover */
 .contact-link::after {
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
-  height: 2px;
+  bottom: -1px;
+  height: 1px;
   width: 100%;
   background: var(--accent);
   transform: scaleX(0);
@@ -1329,10 +1347,11 @@ body {
 /* arrow slides diagonally out on hover */
 .cl-arrow {
   display: inline-block;
+  flex-shrink: 0;
+  font-size: 0.8em;
   color: var(--lime);
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
 }
-.contact-link:hover { gap: 18px; }
 .contact-link:hover .cl-arrow { transform: translate(5px, -5px); }
 .beam-card { display: block; border-radius: 20px; }
 .avail-card {
