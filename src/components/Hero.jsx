@@ -1,9 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import gsap from 'gsap'
+import { SplitText } from 'gsap/SplitText'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { BorderBeam } from 'border-beam'
 import { ThinkingOrb } from 'thinking-orbs'
 import { HERO } from '../data.js'
 import EditTimeline from './EditTimeline.jsx'
+
+gsap.registerPlugin(SplitText, ScrollTrigger)
 
 function useTimecode() {
   const [frame, setFrame] = useState(0)
@@ -19,11 +24,81 @@ function useTimecode() {
   return `${hh}:${mm}:${ss}:${ff}`
 }
 
+// Headline: letters assemble on load, hop on hover (fine pointers only), and the
+// hero copy drifts up and fades as you scroll away. The CSS rise-in on
+// .hero-titles is the no-JS fallback and is switched off once this runs.
+function useHeadline(heroRef, titlesRef) {
+  useLayoutEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const hero = heroRef.current
+    const titles = titlesRef.current
+    const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim()
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+
+    const ctx = gsap.context(() => {
+      titles.classList.add('is-split')
+      titles.querySelectorAll('.hero-title-text').forEach((el, lineIdx) => {
+        SplitText.create(el, {
+          type: 'chars',
+          charsClass: 'hero-char',
+          autoSplit: true,
+          onSplit(self) {
+            // the gradient line: give each letter its slice of one shared gradient
+            if (el.classList.contains('is-grad')) {
+              const w = el.offsetWidth
+              self.chars.forEach((c) => {
+                c.style.backgroundSize = `${w}px 100%`
+                c.style.backgroundPosition = `${-c.offsetLeft}px 0`
+              })
+            }
+            if (canHover) {
+              self.chars.forEach((c) => {
+                const rest = getComputedStyle(c).color
+                c.addEventListener('mouseenter', () => {
+                  gsap.to(c, { y: -18, color: accent, webkitTextStrokeColor: accent, duration: 0.25, ease: 'power3.out', overwrite: 'auto' })
+                })
+                c.addEventListener('mouseleave', () => {
+                  gsap.to(c, { y: 0, color: rest, webkitTextStrokeColor: '', duration: 1, ease: 'elastic.out(1, 0.35)', overwrite: 'auto' })
+                })
+              })
+            }
+            return gsap.from(self.chars, {
+              opacity: 0,
+              yPercent: 70,
+              rotateX: -80,
+              transformOrigin: '50% 100%',
+              duration: 0.9,
+              ease: 'expo.out',
+              stagger: 0.02,
+              delay: 0.15 + lineIdx * 0.12,
+            })
+          },
+        })
+      })
+
+      gsap.to(hero.querySelectorAll('.hero-top, .hero-titles, .hero-bottom'), {
+        y: -90,
+        opacity: 0.18,
+        ease: 'none',
+        scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true },
+      })
+    }, hero)
+
+    return () => {
+      ctx.revert()
+      titles.classList.remove('is-split')
+    }
+  }, [heroRef, titlesRef])
+}
+
 export default function Hero() {
   const timecode = useTimecode()
+  const heroRef = useRef(null)
+  const titlesRef = useRef(null)
+  useHeadline(heroRef, titlesRef)
 
   return (
-    <header className="hero" id="top">
+    <header className="hero" id="top" ref={heroRef}>
       <div className="hero-bg" />
       <div className="hero-top">
         <span className="rec"><span className="dot" />Recording</span>
@@ -34,19 +109,13 @@ export default function Hero() {
         </span>
       </div>
 
-      <div className="hero-titles">
+      <h1 className="hero-titles" ref={titlesRef} aria-label={HERO.lines.join(' ')}>
         {HERO.lines.map((line, i) => (
-          <div className="hero-title-line" key={line}>
-            <motion.span
-              initial={{ y: '110%' }}
-              animate={{ y: 0 }}
-              transition={{ duration: 0.9, delay: 0.15 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
-            >
-              {line}
-            </motion.span>
+          <div className="hero-title-line" key={line} aria-hidden="true">
+            <span className={`hero-title-text${i === 2 ? ' is-grad' : ''}`}>{line}</span>
           </div>
         ))}
-      </div>
+      </h1>
 
       <div className="hero-bottom">
         <motion.p

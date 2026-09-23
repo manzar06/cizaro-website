@@ -344,10 +344,12 @@ body {
 }
 .hero-top .rec { color: var(--accent); display: flex; align-items: center; gap: 8px; }
 .hero-top .rec .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 1.6s infinite; }
-.hero-titles { margin: auto 0; }
-.hero-title-line {
-  overflow: hidden;
-}
+.hero-titles { margin: auto 0; font-weight: 400; animation: rise-in 0.9s var(--ease) 0.15s both; }
+/* no-JS fallback: the block fades up 16px. Off once GSAP splits the letters. */
+@keyframes rise-in { from { opacity: 0; transform: translateY(16px); } }
+.hero-titles.is-split { animation: none; }
+.hero-title-line { perspective: 900px; }
+.hero-title-line .hero-char { will-change: transform; }
 .hero-title-line span {
   display: block;
   font-family: var(--font-display);
@@ -358,7 +360,9 @@ body {
   letter-spacing: -0.01em;
 }
 .hero-title-line:nth-child(2) span { color: transparent; -webkit-text-stroke: 1.5px var(--fg); }
-.hero-title-line:nth-child(3) span { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-title-line:nth-child(3) span,
+.is-split .hero-title-line .is-grad .hero-char { background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.is-split .hero-title-line .is-grad { background: none; }
 .hero-bottom {
   display: flex;
   justify-content: space-between;
