@@ -125,6 +125,15 @@ export default function Contact() {
             <ContactLink i={0} kind="Email" href={`mailto:${CONTACT.email}`} label={CONTACT.email} />
             <ContactLink i={1} external href={CONTACT.instagram.href} kind="Instagram" label={CONTACT.instagram.handle} />
             <ContactLink i={2} external href={CONTACT.discord.href} kind="Discord" label={CONTACT.discord.handle} />
+            {CONTACT.alt && (
+              <div className="contact-alt">
+                <div className="contact-alt-head">Alternate contact</div>
+                <ContactLink i={3} kind="Email" href={`mailto:${CONTACT.alt.email}`} label={CONTACT.alt.email} />
+                <ContactLink i={4} external href={CONTACT.alt.instagram.href} kind="Instagram" label={CONTACT.alt.instagram.handle} />
+                <ContactLink i={5} external href={CONTACT.alt.discord.href} kind="Discord" label={CONTACT.alt.discord.handle} />
+                <ContactLink i={6} external href={CONTACT.alt.whatsapp.href} kind="WhatsApp" label={CONTACT.alt.whatsapp.handle} />
+              </div>
+            )}
           </div>
           <BorderBeam size="pulse-inner" colorVariant="sunset" theme="dark" strength={0.9} staticColors duration={2.8} className="beam-card">
             <div className="avail-card">

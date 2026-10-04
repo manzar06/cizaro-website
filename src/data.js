@@ -19,7 +19,8 @@ export const HERO = {
   kicker: 'Freelance video editor',
   lines: ['CUTS THAT', 'KEEP THEM', 'WATCHING'],
   sub: {
-    name: 'Kunal',
+    greeting: 'Hi, this is',
+    name: 'Cizaro',
     lead: '4+ years turning raw footage into videos people',
     punch: "can't scroll past.",
     niches: ['Gaming', 'Finance', 'Documentary', 'Faceless', 'Shorts'],
@@ -163,6 +164,13 @@ export const CONTACT = {
   email: 'cizaroamv@gmail.com',
   instagram: { handle: '@ig_cizaro', href: 'https://www.instagram.com/ig_cizaro/' },
   discord: { handle: 'cizaro', href: 'https://discord.com/users/443816307385696256' },
+  // Cizaro is a shared pen name; this is the second editor's direct line.
+  alt: {
+    email: 'siddiquimanzar05@gmail.com',
+    instagram: { handle: '@manzar_siddiqui06', href: 'https://www.instagram.com/manzar_siddiqui06/' },
+    discord: { handle: 'manzar4503', href: 'https://discord.com/users/693906878819860482' },
+    whatsapp: { handle: '+91 76788 37168', href: 'https://wa.me/917678837168' },
+  },
   rate: '$20/hr',
   turnaround: '~1 week turnaround',
   response: '24hr response time',

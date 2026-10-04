@@ -132,7 +132,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.7 }}
         >
           <p className="hs-intro">
-            <span className="hs-hi">Hi, I&apos;m</span> <em className="hs-name">{HERO.sub.name}.</em>
+            <span className="hs-hi">{HERO.sub.greeting}</span> <em className="hs-name">{HERO.sub.name}.</em>
           </p>
           <p className="hs-lead">
             {HERO.sub.lead} <em className="hs-punch">{HERO.sub.punch}</em>

@@ -1291,6 +1291,19 @@ body {
   color: var(--fg);
 }
 .contact-link:first-child { border-top: 1px solid var(--line); }
+/* second editor's direct line, quieter than the main Cizaro contacts */
+.contact-alt { display: flex; flex-direction: column; margin-top: 30px; }
+.contact-alt-head {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  padding-bottom: 10px;
+}
+.contact-alt-head + .contact-link { border-top: 1px solid var(--line); }
+.contact-alt .contact-link { padding: 12px 0 14px; }
+.contact-alt .cl-main { font-size: clamp(16px, 1.7vw, 21px); }
 .cl-kind {
   font-family: var(--font-mono);
   font-size: 11px;
