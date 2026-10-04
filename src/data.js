@@ -169,7 +169,6 @@ export const CONTACT = {
     email: 'siddiquimanzar05@gmail.com',
     instagram: { handle: '@manzar_siddiqui06', href: 'https://www.instagram.com/manzar_siddiqui06/' },
     discord: { handle: 'manzar4503', href: 'https://discord.com/users/693906878819860482' },
-    whatsapp: { handle: '+91 76788 37168', href: 'https://wa.me/917678837168' },
   },
   rate: '$20/hr',
   turnaround: '~1 week turnaround',

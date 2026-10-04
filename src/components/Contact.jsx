@@ -131,7 +131,6 @@ export default function Contact() {
                 <ContactLink i={3} kind="Email" href={`mailto:${CONTACT.alt.email}`} label={CONTACT.alt.email} />
                 <ContactLink i={4} external href={CONTACT.alt.instagram.href} kind="Instagram" label={CONTACT.alt.instagram.handle} />
                 <ContactLink i={5} external href={CONTACT.alt.discord.href} kind="Discord" label={CONTACT.alt.discord.handle} />
-                <ContactLink i={6} external href={CONTACT.alt.whatsapp.href} kind="WhatsApp" label={CONTACT.alt.whatsapp.handle} />
               </div>
             )}
           </div>
